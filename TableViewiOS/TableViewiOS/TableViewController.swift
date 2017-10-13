@@ -14,6 +14,8 @@ class TableViewController: UITableViewController {
     let transportItems = ["Bus", "Helicopter", "Truck","Boat","Bicycle", "Motorcycle", "Plane","Train",
                           "Car", "Scooter", "Caravan"
                         ]
+    
+    var indexOfNumbers = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,12 @@ class TableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        //deklarasi index number
+        var indexNumber = "A B C D E F G H I J"
+        
+        //menambahkan indexNumbers kedalam array indexOfNumbers
+        indexOfNumbers = indexNumber.components(separatedBy: " ")
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,6 +63,21 @@ class TableViewController: UITableViewController {
 
         return cell
     }
+    
+    //menambahkan index number pada tableview
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        
+        return indexOfNumbers
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        
+        //deklarasi var temp sebagai penyimpanan data dari indexofnumber
+        let temp = indexOfNumbers as NSArray
+        return temp.index(of: title)
+    }
+
     
 
     /*
